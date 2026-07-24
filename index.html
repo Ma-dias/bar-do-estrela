@@ -1,13 +1,358 @@
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>:: Bar do Estrela :: Cardápio</title>
-</head>
-<body>
+<!DOCTYPE html>
 
-<h1>Bar do Estrela</h1>
-<h1>Item novo</h1>
+<html class="dark" lang="pt-br">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Cardápio - Bar do Estrela</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&amp;family=Work+Sans:wght@300;400;600;700&amp;display=swap"
+          rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+          rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+          rel="stylesheet"/>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-bright": "#393939",
+                        "on-primary-container": "#554300",
+                        "surface-container-highest": "#353535",
+                        "on-secondary": "#313030",
+                        "on-primary-fixed-variant": "#574500",
+                        "on-primary": "#3c2f00",
+                        "surface-variant": "#353535",
+                        "on-secondary-container": "#bab8b7",
+                        "on-background": "#e4e2e1",
+                        "on-tertiary-fixed-variant": "#454744",
+                        "on-tertiary-container": "#444542",
+                        "outline-variant": "#4d4635",
+                        "on-secondary-fixed-variant": "#474646",
+                        "surface-container-low": "#1b1c1c",
+                        "primary-fixed": "#ffe088",
+                        "primary-container": "#d4af37",
+                        "on-tertiary-fixed": "#1a1c19",
+                        "surface": "#131313",
+                        "on-surface": "#e4e2e1",
+                        "surface-tint": "#e9c349",
+                        "inverse-on-surface": "#303030",
+                        "surface-dim": "#131313",
+                        "on-surface-variant": "#d0c5af",
+                        "surface-container": "#1f2020",
+                        "tertiary-container": "#b2b3af",
+                        "secondary-container": "#4a4949",
+                        "tertiary": "#cececa",
+                        "secondary-fixed-dim": "#c8c6c5",
+                        "tertiary-fixed-dim": "#c6c7c2",
+                        "on-error": "#690005",
+                        "primary": "#f2ca50",
+                        "on-secondary-fixed": "#1c1b1b",
+                        "error-container": "#93000a",
+                        "surface-container-lowest": "#0e0e0e",
+                        "surface-container-high": "#2a2a2a",
+                        "on-error-container": "#ffdad6",
+                        "background": "#131313",
+                        "tertiary-fixed": "#e3e3de",
+                        "secondary-fixed": "#e5e2e1",
+                        "primary-fixed-dim": "#e9c349",
+                        "secondary": "#c8c6c5",
+                        "error": "#ffb4ab",
+                        "on-primary-fixed": "#241a00",
+                        "outline": "#99907c",
+                        "on-tertiary": "#2f312e",
+                        "inverse-surface": "#e4e2e1",
+                        "inverse-primary": "#735c00"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "base": "8px",
+                        "section-gap": "80px",
+                        "margin-mobile": "20px",
+                        "margin-desktop": "64px",
+                        "gutter": "24px",
+                        "item-gap": "24px"
+                    },
+                    "fontFamily": {
+                        "display-lg": ["Libre Caslon Text"],
+                        "display-lg-mobile": ["Libre Caslon Text"],
+                        "label-caps": ["Work Sans"],
+                        "headline-md": ["Libre Caslon Text"],
+                        "body-md": ["Work Sans"],
+                        "price-tag": ["Work Sans"],
+                        "body-lg": ["Work Sans"],
+                        "headline-sm": ["Libre Caslon Text"]
+                    },
+                    "fontSize": {
+                        "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "display-lg-mobile": ["32px", {"lineHeight": "40px", "fontWeight": "700"}],
+                        "label-caps": ["12px", {"lineHeight": "16px", "letterSpacing": "0.1em", "fontWeight": "700"}],
+                        "headline-md": ["32px", {"lineHeight": "40px", "fontWeight": "600"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "price-tag": ["20px", {"lineHeight": "24px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                        "headline-sm": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                        "headline-sm-mobile": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                        "display-lg-mobile": ["28px", {"lineHeight": "36px", "fontWeight": "700"}]
+                    }
+                },
+            },
+        }
+    </script>
+    <style>
+        .nocturnal-overlay {
+            background: linear-gradient(to bottom, rgba(19, 19, 19, 0.7), rgba(19, 19, 19, 1));
+        }
+
+        .grain-texture {
+            background-image: url("https://www.transparenttextures.com/patterns/carbon-fibre.png");
+            opacity: 0.03;
+            pointer-events: none;
+        }
+
+        .dotted-leader {
+            border-bottom: 1px dotted #4d4635;
+            flex-grow: 1;
+            margin: 0 8px;
+            margin-bottom: 6px;
+        }
+
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        .active-chip {
+            background-color: #d4af37;
+            color: #131313;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body-md selection:bg-primary-container selection:text-on-primary-container">
+<div class="fixed inset-0 grain-texture z-0"></div>
+<!-- Header (TopAppBar) -->
+<header class="fixed top-0 w-full z-50 flex justify-between items-center px-margin-mobile h-16 bg-surface/90 backdrop-blur-md border-b border-primary">
+    <div class="flex items-center gap-2">
+        <span class="material-symbols-outlined text-primary active:scale-95 transition-transform"
+              data-icon="menu">menu</span>
+    </div>
+    <div class="absolute left-1/2 -translate-x-1/2 flex items-center">
+        <img alt="Bar do Estrela Logo" class="h-10 w-10 object-contain"
+             src="https://lh3.googleusercontent.com/aida-public/AB6AXuAYeT_cuE6Nx2Qln6yiJi8cA-UOYiusOX5BFrSyYGLq35guZ9EsC3IAKPpyR04iIJgwRCYN03rdhyBHVmF8QOkvxbd6LA8R4P0Eh_02PYJUrdH2cAqiUvAFRyt_CQIG1w7PTfgiqHS3XlgWYIyT--94TbZSuC29HpV2bGDZJI7oYFLaq54yFiTQXOhgzfIObBeLouWidcAR7B2NwP2T7dPNvK4FS76KBQ6TlQHJ-2CEYmIZRH0oSqugv5emMtp1kC56nzmGgqjO2Yc"/>
+        <span class="ml-2 font-display-lg-mobile text-headline-sm-mobile text-primary tracking-tight">Bar do Estrela</span>
+    </div>
+    <div class="flex items-center">
+        <span class="material-symbols-outlined text-primary active:scale-95 transition-transform"
+              data-icon="shopping_bag">shopping_bag</span>
+    </div>
+</header>
+<main class="relative z-10 pt-16 pb-24">
+    <!-- Hero Section -->
+    <section class="px-margin-mobile py-10 text-center">
+        <h1 class="font-display-lg-mobile text-display-lg-mobile text-primary mb-2">Cardápio</h1>
+        <p class="font-body-md text-on-surface-variant italic max-w-[280px] mx-auto">
+            Uma seleção curada de sabores autênticos e ingredientes nobres para noites memoráveis.
+        </p>
+        <div class="flex justify-center items-center mt-6">
+            <div class="h-[1px] w-12 bg-primary-container"></div>
+            <span class="material-symbols-outlined text-primary mx-3 text-sm" data-icon="star"
+                  style="font-variation-settings: 'FILL' 1;">star</span>
+            <div class="h-[1px] w-12 bg-primary-container"></div>
+        </div>
+    </section>
+    <!-- Category Quick Nav -->
+    <nav class="sticky top-16 z-40 bg-background/95 backdrop-blur-sm py-4 border-b border-outline-variant/30">
+        <div class="flex gap-3 px-margin-mobile overflow-x-auto hide-scrollbar">
+            <button class="active-chip px-5 py-2 rounded-full font-label-caps text-xs whitespace-nowrap transition-all">
+                PETISCOS
+            </button>
+            <button class="bg-surface-container-high text-on-surface-variant px-5 py-2 rounded-full font-label-caps text-xs whitespace-nowrap hover:bg-surface-bright transition-all">
+                PRATOS
+            </button>
+            <button class="bg-surface-container-high text-on-surface-variant px-5 py-2 rounded-full font-label-caps text-xs whitespace-nowrap hover:bg-surface-bright transition-all">
+                BEBIDAS
+            </button>
+            <button class="bg-surface-container-high text-on-surface-variant px-5 py-2 rounded-full font-label-caps text-xs whitespace-nowrap hover:bg-surface-bright transition-all">
+                SOBREMESAS
+            </button>
+        </div>
+    </nav>
+    <!-- Menu Content -->
+    <div class="px-margin-mobile mt-8 space-y-12">
+        <!-- Section: Recommended -->
+        <section>
+            <div class="flex items-center gap-3 mb-6">
+                <span class="material-symbols-outlined text-primary" data-icon="auto_awesome">auto_awesome</span>
+                <h2 class="font-headline-sm text-primary">Recomendação do Chef</h2>
+            </div>
+            <div class="bg-surface-container-high border-t border-primary p-5 rounded-lg shadow-xl relative overflow-hidden group">
+                <div class="absolute top-0 right-0 p-2">
+                    <span class="bg-primary text-background text-[10px] font-bold px-2 py-0.5 rounded-sm">ESPECIAL</span>
+                </div>
+                <div class="flex flex-col gap-3">
+                    <div class="flex justify-between items-end">
+                        <h3 class="font-headline-sm-mobile text-on-surface group-hover:text-primary transition-colors">
+                            Risoto de Estrela</h3>
+                        <span class="font-price-tag text-primary">R$ 89</span>
+                    </div>
+                    <p class="font-body-md text-on-surface-variant/80 text-sm leading-relaxed">
+                        Arroz arbóreo cozido lentamente no vinho branco, finalizado com açafrão, lascas de Grana Padano
+                        e camarões grelhados no azeite de ervas.
+                    </p>
+                </div>
+            </div>
+        </section>
+        <!-- Section: Petiscos -->
+        <section class="space-y-6">
+            <h2 class="font-headline-sm text-on-surface border-l-2 border-primary pl-3">Petiscos</h2>
+            <div class="space-y-8">
+                <!-- Item 1 -->
+                <div class="group">
+                    <div class="flex justify-between items-baseline mb-1">
+                        <h4 class="font-headline-sm-mobile text-on-surface">Bolinho de Bacalhau</h4>
+                        <div class="dotted-leader"></div>
+                        <span class="font-price-tag text-primary">R$ 42</span>
+                    </div>
+                    <p class="font-body-md text-on-surface-variant/70 text-sm italic">
+                        Receita tradicional portuguesa com lombo de bacalhau Gadus Morhua, fritos na hora. (6 unidades)
+                    </p>
+                </div>
+                <!-- Item 2 -->
+                <div class="group">
+                    <div class="flex justify-between items-baseline mb-1">
+                        <h4 class="font-headline-sm-mobile text-on-surface">Tábua do Porto</h4>
+                        <div class="dotted-leader"></div>
+                        <span class="font-price-tag text-primary">R$ 76</span>
+                    </div>
+                    <p class="font-body-md text-on-surface-variant/70 text-sm italic">
+                        Seleção de queijos artesanais, salame italiano, azeitonas gordais e geleia de pimenta da casa.
+                    </p>
+                </div>
+                <!-- Item 3 -->
+                <div class="group">
+                    <div class="flex justify-between items-baseline mb-1">
+                        <h4 class="font-headline-sm-mobile text-on-surface">Bruschettas Clássicas</h4>
+                        <div class="dotted-leader"></div>
+                        <span class="font-price-tag text-primary">R$ 38</span>
+                    </div>
+                    <p class="font-body-md text-on-surface-variant/70 text-sm italic">
+                        Pão sourdough tostado, tomates cereja confitados, manjericão fresco e redução de balsâmico.
+                    </p>
+                </div>
+            </div>
+        </section>
+        <!-- Section Break Graphic -->
+        <div class="flex items-center justify-center py-4">
+            <div class="h-[1px] w-full bg-outline-variant/30"></div>
+            <span class="material-symbols-outlined text-primary/40 mx-4 text-lg" data-icon="wine_bar">wine_bar</span>
+            <div class="h-[1px] w-full bg-outline-variant/30"></div>
+        </div>
+        <!-- Section: Drinks -->
+        <section class="space-y-6">
+            <h2 class="font-headline-sm text-on-surface border-l-2 border-primary pl-3">Coquetelaria</h2>
+            <div class="space-y-8">
+                <!-- Item 1 -->
+                <div class="group">
+                    <div class="flex justify-between items-baseline mb-1">
+                        <h4 class="font-headline-sm-mobile text-on-surface">Negroni Estrela</h4>
+                        <div class="dotted-leader"></div>
+                        <span class="font-price-tag text-primary">R$ 45</span>
+                    </div>
+                    <p class="font-body-md text-on-surface-variant/70 text-sm italic">
+                        Gin premium, Campari, Vermute Rosso e um toque secreto de bitter de cacau.
+                    </p>
+                </div>
+                <!-- Item 2 -->
+                <div class="group">
+                    <div class="flex justify-between items-baseline mb-1">
+                        <h4 class="font-headline-sm-mobile text-on-surface">Gin Tônica Herbal</h4>
+                        <div class="dotted-leader"></div>
+                        <span class="font-price-tag text-primary">R$ 42</span>
+                    </div>
+                    <p class="font-body-md text-on-surface-variant/70 text-sm italic">
+                        Gin infusionado com alecrim, água tônica premium, zimbro e fatia de limão siciliano.
+                    </p>
+                </div>
+            </div>
+        </section>
+    </div>
+    <!-- Order CTA / Reservation -->
+    <section class="mt-16 px-margin-mobile">
+        <div class="bg-surface-container border border-outline-variant p-6 text-center space-y-4">
+            <p class="font-label-caps text-primary tracking-widest text-[10px]">RESERVE SUA EXPERIÊNCIA</p>
+            <h3 class="font-headline-sm text-on-surface">Deseja uma mesa especial?</h3>
+            <button class="w-full bg-primary text-background font-bold py-4 rounded-sm active:scale-95 transition-all">
+                SOLICITAR RESERVA
+            </button>
+        </div>
+    </section>
+</main>
+<!-- Bottom Navigation Shell (Consistent with Shared Components) -->
+<nav class="fixed bottom-0 left-0 w-full flex justify-around items-center py-3 px-2 bg-surface-container-high border-t border-outline-variant z-50 rounded-t-full">
+    <a class="flex flex-col items-center justify-center text-primary font-bold" href="#">
+        <span class="material-symbols-outlined" data-icon="restaurant_menu" style="font-variation-settings: 'FILL' 1;">restaurant_menu</span>
+        <span class="font-label-caps text-[10px] mt-1">Menu</span>
+    </a>
+    <a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-colors"
+       href="#">
+        <span class="material-symbols-outlined" data-icon="event_available">event_available</span>
+        <span class="font-label-caps text-[10px] mt-1">Reservations</span>
+    </a>
+    <a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-colors"
+       href="#">
+        <span class="material-symbols-outlined" data-icon="location_on">location_on</span>
+        <span class="font-label-caps text-[10px] mt-1">Location</span>
+    </a>
+    <a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-colors"
+       href="#">
+        <span class="material-symbols-outlined" data-icon="person">person</span>
+        <span class="font-label-caps text-[10px] mt-1">Profile</span>
+    </a>
+</nav>
+<!-- Footer -->
+<footer class="w-full py-8 bg-surface-container-lowest border-t border-primary flex flex-col items-center justify-center gap-4 px-margin-mobile text-center mb-20">
+    <div class="flex gap-6 mb-2">
+        <a class="text-on-surface-variant/70 hover:text-primary transition-colors font-label-caps text-[10px]" href="#">INSTAGRAM</a>
+        <a class="text-on-surface-variant/70 hover:text-primary transition-colors font-label-caps text-[10px]" href="#">FACEBOOK</a>
+        <a class="text-on-surface-variant/70 hover:text-primary transition-colors font-label-caps text-[10px]" href="#">PRIVACY</a>
+    </div>
+    <p class="font-body-md text-on-surface-variant/50 text-xs">
+        © 2024 Bar do Estrela. Est. 1992
+    </p>
+</footer>
+<script>
+    // Simple Micro-interaction for category chips
+    const chips = document.querySelectorAll('nav button');
+    chips.forEach(chip => {
+        chip.addEventListener('click', () => {
+            chips.forEach(c => c.classList.remove('active-chip', 'text-background'));
+            chips.forEach(c => c.classList.add('bg-surface-container-high', 'text-on-surface-variant'));
+
+            chip.classList.remove('bg-surface-container-high', 'text-on-surface-variant');
+            chip.classList.add('active-chip');
+        });
+    });
+
+    // Add a parallax-ish scroll effect to header
+    window.addEventListener('scroll', () => {
+        const header = document.querySelector('header');
+        if (window.scrollY > 20) {
+            header.classList.add('bg-surface/95', 'shadow-lg');
+        } else {
+            header.classList.remove('shadow-lg');
+        }
+    });
+</script>
 </body>
 </html>
